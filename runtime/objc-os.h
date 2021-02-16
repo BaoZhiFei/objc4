@@ -716,7 +716,7 @@ template <bool Debug> class monitor_tt;
 template <bool Debug> class recursive_mutex_tt;
 
 #if DEBUG
-#   define LOCKDEBUG 1
+#   define LOCKDEBUG 0
 #else
 #   define LOCKDEBUG 0
 #endif
