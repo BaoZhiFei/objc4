@@ -200,7 +200,7 @@ MODULE_SOURCES += runtime/Messengers.subproj/objc-msg-stub.s
 OTHER_SOURCES += runtime/Messengers.subproj/objc-msg-stub-ppc.s runtime/Messengers.subproj/objc-msg-stub-i386.s
 
 # project root
-OTHER_SOURCES += Makefile APPLE_LICENSE objc-exports
+OTHER_SOURCES += Makefile APPLE_LICENSE objc-exports-i386 objc-exports-ppc
 
 OBJECTS = $(addprefix $(OBJROOT)/, $(addsuffix .o, $(basename $(SOURCES) ) ) )
 OBJECTS_OPTIMIZED = $(OBJECTS:.o=.opt.o)
@@ -462,7 +462,7 @@ define link
 	    $3 ; \
 	  $(SILENT) $(CC) $2 \
 	    -arch $A \
-	    -Wl,-exported_symbols_list,$(SRCROOT)/objc-exports \
+	    -Wl,-exported_symbols_list,$(SRCROOT)/objc-exports-$(A) \
 	    $(ORDER) \
 	    -sectcreate __DATA __commpage $(OBJROOT)/runtime/objc-rtp-sym.$A.o \
 	    -install_name /$(INSTALLDIR)/libobjc$1.$(VERSION_NAME)$(LIBRARY_EXT) \
